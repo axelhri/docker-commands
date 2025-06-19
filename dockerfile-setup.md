@@ -69,6 +69,16 @@ docker run -d --name con-name -p 3000:3000 my-api
 docker run -d --name con-name --env-file .env -p 3000:3000 my-api
 ```
 
+### Push une image sur Docker hub
+
+```bash
+docker tag monapplication:v1.0 monusername/monapplication:v1.0
+```
+
+```bash
+docker push monusername/monapplication:v1.0
+```
+
 ## Exemples concrets
 
 ### Développement
