@@ -126,3 +126,20 @@ EXPOSE 4173
 
 CMD ["serve", "-s", "dist", "-l", "4173"]
 ```
+
+## Run une API avec une BDD Postgres
+
+Créer un **network** :
+```bash
+docker network create my-app-network
+```
+
+Run une **image** de **postgres** :
+```bash
+docker run --name my-postgres-db --network my-app-network ` -e POSTGRES_DB=database -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mypassword -v postgres_data:/var/lib/postgresql/data ` -d postgres
+```
+
+Run l'**image** de l'**API** :
+```bash
+docker run --name my-spring-app-container --network my-app-network -p 8080:8080 -d my-spring-app
+```
